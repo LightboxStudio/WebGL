@@ -274,7 +274,7 @@ MonoBehaviour:
   modelPrefabs:
   - {fileID: -665633699749791366, guid: 8fde1b974efc24a83a062d32f4486e22, type: 3}
   placementPoint: {fileID: 4097844935750994378}
-  placementIndicator: {fileID: 0}
+  placementIndicator: {fileID: 4692238412509208022}
 --- !u!4 &737419703
 Transform:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4692238412509208022
 Transform:
   m_ObjectHideFlags: 0

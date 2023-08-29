@@ -16,6 +16,28 @@ public class ModelLoader : MonoBehaviour
     void Awake()
     {
         instance = this;
+        try
+        {
+            if (placementPoint == null)
+            {
+                throw new Exception("Missing reference to the placement point (ModelLoader component).");
+            }
+
+            if (placementIndicator == null)
+            {
+                throw new Exception("Missing reference to the placement indicator (ModelLoader component).");
+            }
+
+            if (modelPrefabs.Count == 0)
+            {
+                throw new Exception("No model prefabs set (ModeLoader component).");
+            }
+        }
+        catch (Exception e)
+        {
+            Application.ExternalCall("alert", e.ToString());
+            return;
+        }
         AssignToDictionary();
         LoadModel();
     }
