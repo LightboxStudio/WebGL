@@ -18,20 +18,7 @@ public class ModelLoader : MonoBehaviour
         instance = this;
         try
         {
-            if (placementPoint == null)
-            {
-                throw new Exception("Missing reference to the placement point (ModelLoader component).");
-            }
-
-            if (placementIndicator == null)
-            {
-                throw new Exception("Missing reference to the placement indicator (ModelLoader component).");
-            }
-
-            if (modelPrefabs.Count == 0)
-            {
-                throw new Exception("No model prefabs set (ModeLoader component).");
-            }
+            CheckForDependencies();
         }
         catch (Exception e)
         {
@@ -40,6 +27,24 @@ public class ModelLoader : MonoBehaviour
         }
         AssignToDictionary();
         LoadModel();
+    }
+
+    private void CheckForDependencies()
+    {
+        if (placementPoint == null)
+        {
+            throw new Exception("Missing reference to the placement point (ModelLoader component).");
+        }
+
+        if (placementIndicator == null)
+        {
+            throw new Exception("Missing reference to the placement indicator (ModelLoader component).");
+        }
+
+        if (modelPrefabs.Count == 0)
+        {
+            throw new Exception("No model prefabs set (ModeLoader component).");
+        }
     }
 
     private void AssignToDictionary()
@@ -60,6 +65,7 @@ public class ModelLoader : MonoBehaviour
             {
                 var placementClone = Instantiate(model.gameObject, instance.placementIndicator.position, Quaternion.identity);
                 placementClone.transform.SetParent(instance.placementIndicator);
+                placementClone.transform.localScale = Vector3.one * 0.75f;
 
                 var clone = Instantiate(model.gameObject, instance.placementPoint.position, Quaternion.identity);
                 clone.transform.SetParent(instance.placementPoint);

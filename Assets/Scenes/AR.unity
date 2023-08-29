@@ -964,7 +964,7 @@ MonoBehaviour:
   cameraStartHeight: 1.25
   usePlacementIndicator: 1
   placementIndicatorSettings:
-    minZ: 0.1
+    minZ: 0.125
     maxZ: 5
     placementIndicator: {fileID: 4692238412509208020}
     placed: 1
