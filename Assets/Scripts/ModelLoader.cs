@@ -8,6 +8,7 @@ public class ModelLoader : MonoBehaviour
     public static ModelLoader instance;
     public List<Model> modelPrefabs = new List<Model>();
     public Transform placementPoint;
+    public Transform placementIndicator;
 
     [Header("Data")]
     private Dictionary<string, Model> models = new Dictionary<string, Model>();
@@ -33,9 +34,11 @@ public class ModelLoader : MonoBehaviour
         {
             QueryParameters.CollectQueryParameters();
             string id = QueryParameters.values["modelId"];
-            Model model = null;
-            if (instance.models.TryGetValue(id, out model))
+            if (instance.models.TryGetValue(id, out Model model))
             {
+                var placementClone = Instantiate(model.gameObject, instance.placementIndicator.position, Quaternion.identity);
+                placementClone.transform.SetParent(instance.placementIndicator);
+
                 var clone = Instantiate(model.gameObject, instance.placementPoint.position, Quaternion.identity);
                 clone.transform.SetParent(instance.placementPoint);
             }
