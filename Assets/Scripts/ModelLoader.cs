@@ -65,7 +65,7 @@ public class ModelLoader : MonoBehaviour
             {
                 var placementClone = Instantiate(model.gameObject, instance.placementIndicator.position, Quaternion.identity);
                 placementClone.transform.SetParent(instance.placementIndicator);
-                placementClone.transform.localScale = Vector3.one * 0.75f;
+                placementClone.transform.localScale = Vector3.one * 0.5f;
 
                 var clone = Instantiate(model.gameObject, instance.placementPoint.position, Quaternion.identity);
                 clone.transform.SetParent(instance.placementPoint);
