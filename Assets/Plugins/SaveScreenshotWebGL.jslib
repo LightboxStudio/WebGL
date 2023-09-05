@@ -1,13 +1,13 @@
 mergeInto(LibraryManager.library, {
   SaveScreenshotWebGL: function (filename, data) {
     const pageImage = new Image();
-    filename = Pointer_stringify(filename);
+    filename = UTF8ToString(filename);
 
     if (!filename.endsWith(".png")) {
       filename += ".png";
     }
 
-    pageImage.src = "data:image/png;base64," + Pointer_stringify(data);
+    pageImage.src = "data:image/png;base64," + UTF8ToString(data);
 
     pageImage.onload = function () {
       const canvas = document.createElement("canvas");
